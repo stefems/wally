@@ -1,0 +1,81 @@
+
+html, body {
+	font-family: 'Raleway', sans-serif;
+}
+
+/*=====================================================================
+  DESKTOP CLASSES 
+  =====================================================================
+*/
+.blogSideBar {
+	
+}
+
+.blogPost {
+
+}
+.desktopHeader{
+	border-width: 1px;
+	border-bottom-style: solid;
+	border-color: grey;
+	width: 100%;
+}
+.titleDiv {
+	width: calc(5*(100vw / 12 ) - 1vw);
+	float: left;
+}
+.menuDiv {
+	margin-top: 35px;
+	padding-left: 2px;
+	padding-right: 2px;
+	border-right-style: solid;
+	border-width: 1px;
+	border-color: grey;
+	float: left;
+}
+.menuDivEnd {
+	margin-top: 35px;
+	padding-left: 2px;
+	padding-right: 2px;
+	float: left;
+}
+	
+
+
+/*=====================================================================
+  DESKTOP CLASSES 
+  =====================================================================
+*/
+
+.mobileHeader {
+	display: none;
+}
+.mobileFooter {
+	display: none;
+}
+
+
+/*If the device width is 1000px or fewer
+NOTE:
+	The bootstrap wrap occurs at ~991px, hence the number.
+	If desktop users split their windows, the sidebar will 
+	go away. They'll have to adjust the zoom to get it back.
+	
+*/
+@media only screen and (max-width: 1000px)  {
+	.blogSideBar {
+		display: none;
+	}
+	.desktopHeader {
+		display: none;
+	}
+	.desktopFooter {
+		display: none;
+	}
+	.mobileHeader {
+		display: block;
+	}
+	.mobileFooter {
+		display: block;
+	}
+}
