@@ -5,7 +5,7 @@
 		<?php include("head.php"); ?>
 	</head>
 
-	<body onload="loadRecent()">
+	<body onload="loadMore()">
 		<?php include("menu.php"); ?>
 		   <div class="container">
 				<div class="row">
@@ -18,6 +18,7 @@
 						
 					</div>
 				</div>
+				<button id="loadMoreButton" onclick="loadMore()" type="button" class="btn btn-primary">Load More!</button>
 		   </div>
 
 

@@ -16,22 +16,46 @@ html, body {
 }
 
 .postSummaryRoot {
-	
-	
+	/*cursor: pointer;*/
+	position: relative;
+}
+
+.postSummaryRoot *{
+	padding: 3px;
+}
+
+.postSummaryContent {
+	display: inline-block;
 }
 
 .postSummaryThumb {
 	height: 20%;
 	width: 20%;
+	margin-top: 0;
+	margin-bottom: 0;
+	vertical-align: baseline;
 	display: inline-block;
 }
 
 .postSummaryTitle {
 	display: inline-block;
 }
+
+.postSummaryTagContainer i{
+	display: inline;
+}
+
 .postSummaryDate {
-	display: block;
+	display: inline-block;
 	color: lightgrey;
+}
+
+.postSummarySpan {
+	position: absolute; 
+	width: 100%;
+	height: 100%;
+	left: 0;
+	z-index: 1;
 }
 .postSummaryDescription {
 	display: block;
@@ -61,6 +85,9 @@ html, body {
 	padding-left: 2px;
 	padding-right: 2px;
 	float: left;
+}
+
+#loadMoreButton {
 }
 	
 

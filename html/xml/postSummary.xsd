@@ -12,7 +12,7 @@
 				  <xs:element name="date" type="xs:date"/>
 				  <xs:element name="tags"/>
 					<xs:sequence>
-						<xs:element name="tag" type="string"/>
+						<xs:element name="tag" type="string" maxOccurs="unbounded"/>
 					</xs:sequence>
 				  <xs:element name="imagePath" type="xs:string" minOccurs="0"/>
 				  <xs:element name="summaryText" type="xs:string"/>
