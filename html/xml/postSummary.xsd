@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema 
+	xmlns:xs="www.whilefalse.io/XMLSchema"
+	targetNamespace="www.whilefalse.io"
+	xmlns="www.whilefalse.io">
+	<xs:element name="postList">
+		<xs:complexType>
+			<xs:element name="postSummary" maxOccurs="unbounded">
+			  <xs:complexType>
+				<xs:sequence>
+				  <xs:element name="title" type="xs:string"/>
+				  <xs:element name="date" type="xs:date"/>
+				  <xs:element name="tags"/>
+					<xs:sequence>
+						<xs:element name="tag" type="string"/>
+					</xs:sequence>
+				  <xs:element name="imagePath" type="xs:string" minOccurs="0"/>
+				  <xs:element name="summaryText" type="xs:string"/>
+				  <xs:element name="url" type="xs:anyURI"/>
+				</xs:sequence>
+			  </xs:complexType>
+			</xs:element>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -11,9 +11,32 @@ html, body {
 	
 }
 
-.blogPost {
+.blogPostArea {
 
 }
+
+.postSummaryRoot {
+	
+	
+}
+
+.postSummaryThumb {
+	height: 20%;
+	width: 20%;
+	display: inline-block;
+}
+
+.postSummaryTitle {
+	display: inline-block;
+}
+.postSummaryDate {
+	display: block;
+	color: lightgrey;
+}
+.postSummaryDescription {
+	display: block;
+}
+
 .desktopHeader{
 	border-width: 1px;
 	border-bottom-style: solid;
