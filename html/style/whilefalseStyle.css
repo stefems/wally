@@ -80,6 +80,13 @@ html, body {
 	border-color: grey;
 	float: left;
 }
+
+.menuDiv:hover {
+	cursor: pointer;
+}
+.menuDivEnd:hover {
+	cursor: pointer;
+}
 .menuDivEnd {
 	margin-top: 35px;
 	padding-left: 2px;

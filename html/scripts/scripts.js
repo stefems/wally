@@ -1,8 +1,53 @@
 var postNumberLoaded = 0;
 
-function loadMore() {
-	loadPosts(postNumberLoaded, postNumberLoaded + 15);
-}
+
+var onMenuTagClick = ( function () {
+	var tagList = {codeTag:-1, coffeeTag:-1, humorTag:-1, careerTag:-1};
+
+	return function(tagSelected) {
+		var tagsSelected = 0;
+		//determine number of tags selected(==1)
+		Object.keys(tagList).forEach(function (key) {
+			if (tagList[key] === 1) {
+				tagsSelected += 1;
+			}
+		});
+		//if tag is -1, meaning neutral state, meaning strike out others, set them to 0, set him to 1
+		if (tagList[tagSelected] === -1) {
+			//set the value to 1
+			tagList[tagSelected] = 1;
+			//set others to 0, strike them
+			Object.keys(tagList).forEach(function (key) {
+				if (tagSelected !== key) {
+					tagList[key] = 0;
+					document.getElementById(key).style.setProperty("text-decoration", "line-through");
+				}
+			});		
+		}
+		//else if tag is 0, and not last guy to be added, meaning it shouldnt be struck through, should be 1
+		else if ( (tagList[tagSelected] === 0) && ((tagsSelected < 3)) ){
+			tagList[tagSelected] = 1;
+			document.getElementById(tagSelected).style.setProperty("text-decoration", "none");
+		}
+		//else , reset to neutral state
+
+		// else if tag is 1 and not last, set to 0 and strike out
+		else if ( (tagList[tagSelected] === 1) && (tagsSelected > 1) ) {
+			tagList[tagSelected] = 0;
+			document.getElementById(tagSelected).style.setProperty("text-decoration", "line-through");
+		}
+		//else if tag is 1 and last, or if tag is 0 and last, reset to neutral
+		else if ( ((tagList[tagSelected] === 1) && (tagsSelected === 1)) || ((tagList[tagSelected] === 0) && (tagsSelected === 3)) ) {
+			Object.keys(tagList).forEach(function (key) {
+				tagList[key] = -1;
+				document.getElementById(key).style.setProperty("text-decoration", "none");
+			});
+		}
+		//TODO: Call the ajax call to update the posts according to tags selected
+		return tagList;
+	}
+})();
+
 function loadMore() {
 	var blogPostArea = document.getElementById("postArea");
 	var xhttp = new XMLHttpRequest();
@@ -14,8 +59,8 @@ function loadMore() {
 		//TODO PERFORMANCE: Is it okay to get all of the posts
 		//  like this and only use the first few?
 		posts = xmlDoc.getElementsByTagName("postSummary");
-		//Only run the recent ones
-		for (i = postNumberLoaded; i < postNumberLoaded + 15; i++) {
+		//Only run the recent ones TODO Asynchronous JS?
+		for (i = postNumberLoaded; i < postNumberLoaded + 15; i++) { 
 			//if we're out of posts :(
 			if (posts.length == i) {
 				var loadMoreButton = document.getElementById("loadMoreButton");
@@ -65,7 +110,6 @@ function createPostSummaryHTML(XMLPostData, postAreaElement) {
 		postRoot.appendChild(postThumb);
 	}
 	postURL.href = XMLPostData.getElementsByTagName("url")[0].innerHTML;
-	console.log(postURL.href);
 	postURL.appendChild(postURLSpan);
 	postDate.innerHTML = XMLPostData.getElementsByTagName("date")[0].innerHTML;
 	postDescr.innerHTML = XMLPostData.getElementsByTagName("summaryText")[0].innerHTML;
@@ -77,7 +121,6 @@ function createPostSummaryHTML(XMLPostData, postAreaElement) {
 	postContent.appendChild(postDate);
 	postContent.appendChild(postDescr);
 	//Append postContent to root, root to post area
-	//console.log(XMLPostData.getElementsByTagName("url")[0].innerHTML);
 	//postRoot.href = XMLPostData.getElementsByTagName("url")[0].innerHTML;
 	postRoot.appendChild(postURL);
 	postRoot.appendChild(postContent);
