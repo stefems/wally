@@ -1,10 +1,12 @@
+/* remove me! */
 var postNumberLoaded = 0;
 
-
+/*TODO: Phase out the number system and only use the strikethrough quality */
 var onMenuTagClick = ( function () {
-	var tagList = {codeTag:-1, coffeeTag:-1, humorTag:-1, careerTag:-1};
+	var tagList = {Code:-1, Coffee:-1, Humor:-1, Career:-1};
 
 	return function(tagSelected) {
+		console.log("calling onMenuTagClick()");
 		var tagsSelected = 0;
 		//determine number of tags selected(==1)
 		Object.keys(tagList).forEach(function (key) {
@@ -43,38 +45,101 @@ var onMenuTagClick = ( function () {
 				document.getElementById(key).style.setProperty("text-decoration", "none");
 			});
 		}
+		console.log(tagList);
+		refreshPosts();
 		//TODO: Call the ajax call to update the posts according to tags selected
 		return tagList;
 	}
 })();
 
+function getSelectedTagsViaMenu() {
+	console.log("calling getSelectedTagsViaMenu()");
+	var tagList = [];
+	var menuItems = [];
+	menuItems = document.querySelectorAll('.menuDiv, .menuDivEnd');
+	//loop through the elements and determine what is not striked
+	for (var i = 0; i < 4; i++) {
+		var tagStyle = menuItems[i].getAttribute("style");
+		console.log(tagStyle);
+		if (tagStyle === null) {
+			tagList.push(menuItems[i].getAttribute("id"));
+		}
+		else if (tagStyle.includes("none")) {
+			tagList.push(menuItems[i].getAttribute("id"));
+		}
+	}
+	console.log(tagList);
+	return tagList;
+}
+
+function getPostsByTag(postElements) {
+	var newPostList = [];
+	var tags = getSelectedTagsViaMenu();
+	//go through the postElements and remove those without the matching tags
+	for (var i = 0; i < postElements.length; i++) {
+		//get the tags of the xml element
+		var XMLtags = postElements[i].getElementsByTagName("tag");
+		//go through the tags of the xml element and see if they exist in the tag listStyleType
+		for (var j = 0; j < XMLtags.length; j++) {
+			//if the current xml tag in the list of selected tags
+			if (tags.indexOf(XMLtags[j].innerHTML) !== -1 ) {
+				newPostList.push(postElements[i]);
+				break;
+			}
+		}
+	}
+	return newPostList;
+}
+
+function refreshPosts() {
+	console.log("calling refreshPosts()");
+	//reset the counter for posts loaded
+	postNumberLoaded = 0;
+	//get the parent of the post area, the old post area
+	var postParent = document.getElementById("postAreaParent");
+	var postArea = document.getElementById("postArea");
+	//create a new post area div
+	var newPostArea = document.createElement("DIV");
+	newPostArea.className = "col-md-9 blogPostArea";
+	newPostArea.id = "postArea";
+	//replace the div
+	postParent.replaceChild(newPostArea, postArea);
+	var loadMoreButton = document.getElementById("loadMoreButton");
+	loadMoreButton.style.display = "block";
+	//call load more
+	loadMore();
+}
+
 function loadMore() {
+	console.log("calling loadMore()");
 	var blogPostArea = document.getElementById("postArea");
 	var xhttp = new XMLHttpRequest();
 	var xmlDoc, txt, postRoot, posts;
 	xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-		xmlDoc = this.responseXML;
-		postRoot = xmlDoc.getElementsByTagName("postList")[0];
-		//TODO PERFORMANCE: Is it okay to get all of the posts
-		//  like this and only use the first few?
-		posts = xmlDoc.getElementsByTagName("postSummary");
-		//Only run the recent ones TODO Asynchronous JS?
-		for (i = postNumberLoaded; i < postNumberLoaded + 15; i++) { 
-			//if we're out of posts :(
-			if (posts.length == i) {
-				var loadMoreButton = document.getElementById("loadMoreButton");
-				loadMoreButton.style.display = "none";
-				break;
+		if (this.readyState == 4 && this.status == 200) {
+			xmlDoc = this.responseXML;
+			postRoot = xmlDoc.getElementsByTagName("postList")[0];
+			//TODO PERFORMANCE: Is it okay to get all of the posts
+			//  like this and only use the first few?
+			posts = xmlDoc.getElementsByTagName("postSummary");
+			posts = getPostsByTag(posts);
+			//Only run the recent ones TODO Asynchronous JS?
+			for (i = postNumberLoaded; i < postNumberLoaded + 15; i++) { 
+				//if we're out of posts :(
+				if (posts.length === i) {
+					var loadMoreButton = document.getElementById("loadMoreButton");
+					loadMoreButton.style.display = "none";
+					break;
+				}
+				else {
+					//if the postXML has the right tag
+					//get the xml post element by index and pass it
+					createPostSummaryHTML(posts[i], blogPostArea);
+				}
+				
 			}
-			else {
-				//get the xml post element by index and pass it
-				createPostSummaryHTML(posts[i], blogPostArea);
-			}
-			
+			postNumberLoaded += 15;
 		}
-		postNumberLoaded += 15;
-    }
   };
   var date = new Date();
   var dateSeconds = date.getSeconds();

@@ -8,16 +8,16 @@
 					<!-- TODO: Random phrase below title on load?-->
 					<h2></h2>
 				</div>
-				<div id="codeTag" class="menuDiv" onclick="onMenuTagClick(this.id)">
+				<div id="Code" class="menuDiv" onclick="onMenuTagClick(this.id)">
 					Code
 				</div>
-				<div id="careerTag" class="menuDiv" onclick="onMenuTagClick(this.id)">
+				<div id="Career" class="menuDiv" onclick="onMenuTagClick(this.id)">
 					Career
 				</div>
-				<div id="humorTag" class="menuDiv" onclick="onMenuTagClick(this.id)">
+				<div id="Humor" class="menuDiv" onclick="onMenuTagClick(this.id)">
 					Humor
 				</div>
-				<div id="coffeeTag" class="menuDivEnd" onclick="onMenuTagClick(this.id)">
+				<div id="Coffee" class="menuDivEnd" onclick="onMenuTagClick(this.id)">
 					Coffee
 				</div>
 			</div>

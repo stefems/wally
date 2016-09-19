@@ -8,7 +8,7 @@
 	<body onload="loadMore()">
 		<?php include("menu.php"); ?>
 		   <div class="container">
-				<div class="row">
+				<div class="row" id="postAreaParent">
 					<!-- blog content column-->
 					<div id="postArea" class="col-md-9 blogPostArea">
 						
