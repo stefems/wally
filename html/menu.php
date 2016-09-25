@@ -4,7 +4,7 @@
 		<div class="container">
 			<div class="row desktopHeader">
 				<div class="titleDiv">
-					<h1>While False</h1>
+					<h1><p id="desktopTitle" onclick="resetPage()">While False</p></h1>
 					<!-- TODO: Random phrase below title on load?-->
 					<h2></h2>
 				</div>
@@ -23,7 +23,7 @@
 			</div>
 			<div class="row mobileHeader">
 				<div class="col-med-12">
-					<h1>While False</h1>
+					<h1><p id="mobileTitle" onclick="resetPage()">While False</p></h1>
 					<!-- TODO: Random phrase below title on load?-->
 					<h2></h2>
 				</div>

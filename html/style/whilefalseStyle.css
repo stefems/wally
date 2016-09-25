@@ -7,6 +7,11 @@ html, body {
   DESKTOP CLASSES 
   =====================================================================
 */
+
+#desktopTitle {
+	cursor: pointer;
+	display: inline;
+}
 .blogSideBar {
 	
 }
@@ -14,6 +19,7 @@ html, body {
 .blogPostArea {
 
 }
+
 
 .postSummaryRoot {
 	/*cursor: pointer;*/
@@ -29,11 +35,11 @@ html, body {
 }
 
 .postSummaryThumb {
-	height: 20%;
-	width: 20%;
-	margin-top: 0;
+	height: 30%;
+	width: 30%;
+	margin-top: 4%;
 	margin-bottom: 0;
-	vertical-align: baseline;
+	vertical-align: top;
 	display: inline-block;
 }
 
@@ -57,6 +63,14 @@ html, body {
 	left: 0;
 	z-index: 1;
 }
+
+#postPageElement {
+	display: none;
+}
+
+.postSummarySpan:hover {
+	cursor: pointer;
+}
 .postSummaryDescription {
 	display: block;
 }
@@ -66,7 +80,10 @@ html, body {
 	border-bottom-style: solid;
 	border-color: grey;
 	width: 100%;
+	margin-left: 0;
+	margin-right: 0;
 }
+
 .titleDiv {
 	width: calc(5*(100vw / 12 ) - 1vw);
 	float: left;
@@ -95,20 +112,83 @@ html, body {
 }
 
 #loadMoreButton {
+	width: 100%;
+	margin-bottom: 15%;
+}
+
+.loading {
+	display: none;
+	padding-bottom: 10%;
+	padding-top: 10%;
+	padding-left: 30%;
 }
 	
 
 
 /*=====================================================================
-  DESKTOP CLASSES 
+  MOBILE CLASSES 
   =====================================================================
 */
 
+#mobileTitle {
+	cursor: pointer;
+	display: inline;
+}
 .mobileHeader {
+	margin: 0;
+	width: 100%;
 	display: none;
+	text-align: center;
+	border-width: 1px;
+	border-bottom-style: solid;
+	border-color: lightgrey;
+	width: 100%;
 }
 .mobileFooter {
+	width: 100%;
+	position: fixed;
 	display: none;
+	border-width: 1px;
+	border-top-style: solid;
+	border-left-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-color: lightgrey;
+	background-color: white;
+	bottom: 0;
+	z-index: 2;
+	vertical-align: bottom;
+}
+
+.mobileMenuTagDiv {
+	border-left-style: none;
+	border-top-style: none;
+	border-bottom-style: none;
+	display: inline-block;
+    border-right-width: 1px;
+    border-width: 1px;
+    border-right-style: solid;
+    border-color: grey;
+	background-color: white;
+    width: 25%;
+    margin: 0;
+    text-align: center;
+    float: left;
+}
+.mobileMenuTagDivEnd {
+	display: inline-block;
+    width: 25%;
+    margin: 0;
+    text-align: center;
+    float: left;
+}
+
+.mobileTagIcon {
+	display: inline;
+	color: grey;
+}
+.marked {
+	color: white;
 }
 
 
@@ -135,4 +215,8 @@ NOTE:
 	.mobileFooter {
 		display: block;
 	}
+	.postSummaryThumb {
+		margin-top: 10%;
+	}
+
 }

@@ -1,12 +1,40 @@
 /* remove me! */
 var postNumberLoaded = 0;
 
+function onMobileTagClick(tagSelected) {
+	resetPage();
+	//get the element
+	var tagIcon = tagSelected.childNodes[1];
+	//if the tag is marked, remove the mark
+	if (tagIcon.className.includes("marked")) {
+		tagIcon.className = tagIcon.className.split("marked")[0];
+		//modify the parent too
+		tagSelected.style.backgroundColor = "white";
+	}
+	//else if the tag is not marked, mark it
+	else {
+		tagIcon.className += " marked";
+		tagSelected.style.backgroundColor = "grey";
+	}
+	refreshPosts();
+}
+
+function resetPage() {
+	var postPageDiv = document.getElementById("postPageElement");
+	//if post page is shown, remove it, and show the post summary
+	if (window.getComputedStyle(postPageDiv).getPropertyValue("display") !== "none") {
+		postPageDiv.removeChild(postPageDiv.childNodes[0]);
+		$("#postAreaParent").css('display', 'block');
+	}
+}
+
 /*TODO: Phase out the number system and only use the strikethrough quality */
 var onMenuTagClick = ( function () {
+	
 	var tagList = {Code:-1, Coffee:-1, Humor:-1, Career:-1};
 
 	return function(tagSelected) {
-		console.log("calling onMenuTagClick()");
+		resetPage();
 		var tagsSelected = 0;
 		//determine number of tags selected(==1)
 		Object.keys(tagList).forEach(function (key) {
@@ -18,7 +46,7 @@ var onMenuTagClick = ( function () {
 		if (tagList[tagSelected] === -1) {
 			//set the value to 1
 			tagList[tagSelected] = 1;
-			//set others to 0, strike them
+			//set others to 0, mark the selected tag
 			Object.keys(tagList).forEach(function (key) {
 				if (tagSelected !== key) {
 					tagList[key] = 0;
@@ -31,8 +59,6 @@ var onMenuTagClick = ( function () {
 			tagList[tagSelected] = 1;
 			document.getElementById(tagSelected).style.setProperty("text-decoration", "none");
 		}
-		//else , reset to neutral state
-
 		// else if tag is 1 and not last, set to 0 and strike out
 		else if ( (tagList[tagSelected] === 1) && (tagsSelected > 1) ) {
 			tagList[tagSelected] = 0;
@@ -45,9 +71,7 @@ var onMenuTagClick = ( function () {
 				document.getElementById(key).style.setProperty("text-decoration", "none");
 			});
 		}
-		console.log(tagList);
 		refreshPosts();
-		//TODO: Call the ajax call to update the posts according to tags selected
 		return tagList;
 	}
 })();
@@ -56,19 +80,35 @@ function getSelectedTagsViaMenu() {
 	console.log("calling getSelectedTagsViaMenu()");
 	var tagList = [];
 	var menuItems = [];
-	menuItems = document.querySelectorAll('.menuDiv, .menuDivEnd');
-	//loop through the elements and determine what is not striked
-	for (var i = 0; i < 4; i++) {
-		var tagStyle = menuItems[i].getAttribute("style");
-		console.log(tagStyle);
-		if (tagStyle === null) {
-			tagList.push(menuItems[i].getAttribute("id"));
+	var isMobile = false;
+	if (window.getComputedStyle(document.getElementsByClassName("mobileFooter")[0]).getPropertyValue("display") !== "none") {
+		console.log("is mobile");
+		isMobile = true;
+	}
+	if (isMobile) {
+		menuItems = document.getElementsByClassName("marked");
+		//loop through the marked elements and get/modify their ids
+		for (var i = 0; i < menuItems.length; i++) {
+			tagList.push(menuItems[i].id.split("Mobile")[0]);
 		}
-		else if (tagStyle.includes("none")) {
-			tagList.push(menuItems[i].getAttribute("id"));
+		//if the mobile list is empty
+		if (menuItems.length === 0){
+			tagList = ['Coffee', 'Code', 'Humor', 'Career'];
 		}
 	}
-	console.log(tagList);
+	else {
+		menuItems = document.querySelectorAll('.menuDiv, .menuDivEnd');
+		//loop through the elements and determine what is not striked
+		for (var i = 0; i < 4; i++) {
+			var tagStyle = menuItems[i].getAttribute("style");
+			if (tagStyle === null) {
+				tagList.push(menuItems[i].getAttribute("id"));
+			}
+			else if (tagStyle.includes("none")) {
+				tagList.push(menuItems[i].getAttribute("id"));
+			}
+		}
+	}
 	return tagList;
 }
 
@@ -140,14 +180,14 @@ function loadMore() {
 			}
 			postNumberLoaded += 15;
 		}
-  };
-  var date = new Date();
-  var dateSeconds = date.getSeconds();
-  var id = Math.random() * dateSeconds;
-  dateSeconds = date.getSeconds();
-  id *= dateSeconds;
-  xhttp.open("GET", "../xml/posts.xml?t=" + id, true);
-  xhttp.send();
+	};
+	var date = new Date();
+	var dateSeconds = date.getSeconds();
+	var id = Math.random() * dateSeconds;
+	dateSeconds = date.getSeconds();
+	id *= dateSeconds;
+	xhttp.open("GET", "../xml/posts.xml?t=" + id, true);
+	xhttp.send();
 }
 
 function createPostSummaryHTML(XMLPostData, postAreaElement) {
@@ -167,6 +207,10 @@ function createPostSummaryHTML(XMLPostData, postAreaElement) {
 	postContent.className = "postSummaryContent";
 	postURLSpan.className = "postSummarySpan";
 	//Assigning values to the elements
+	var postPageName = XMLPostData.getElementsByTagName("url")[0].innerHTML
+	postURLSpan.onclick = function () {
+		loadPostPage(postPageName);
+	};
 	postTitle.innerHTML = XMLPostData.getElementsByTagName("title")[0].innerHTML;
 	var thumbnails = XMLPostData.getElementsByTagName("imagePath");
 	if (thumbnails.length != 0) {
@@ -174,8 +218,8 @@ function createPostSummaryHTML(XMLPostData, postAreaElement) {
 		postThumb.className = "img-thumbnail postSummaryThumb";
 		postRoot.appendChild(postThumb);
 	}
-	postURL.href = XMLPostData.getElementsByTagName("url")[0].innerHTML;
-	postURL.appendChild(postURLSpan);
+	//postURL.href = XMLPostData.getElementsByTagName("url")[0].innerHTML;
+	//postURL.appendChild(postURLSpan);
 	postDate.innerHTML = XMLPostData.getElementsByTagName("date")[0].innerHTML;
 	postDescr.innerHTML = XMLPostData.getElementsByTagName("summaryText")[0].innerHTML;
 	var tags = XMLPostData.getElementsByTagName("tags")[0];
@@ -187,7 +231,8 @@ function createPostSummaryHTML(XMLPostData, postAreaElement) {
 	postContent.appendChild(postDescr);
 	//Append postContent to root, root to post area
 	//postRoot.href = XMLPostData.getElementsByTagName("url")[0].innerHTML;
-	postRoot.appendChild(postURL);
+	//postRoot.appendChild(postURL);
+	postRoot.appendChild(postURLSpan);
 	postRoot.appendChild(postContent);
 	postAreaElement.appendChild(postRoot);
 }
@@ -226,4 +271,13 @@ function createTagSpan(tagList, contentElement) {
 	//append to contentElement
 	contentElement.appendChild(postTags);
 	
+}
+
+function loadPostPage(postPageName) {
+	//hide the post parent
+	$("#postAreaParent").css('display', 'none');
+	//load the data into the post page element
+	$("#postPageElement").load("../postPages/" + postPageName);
+	//show the post page element
+	$("#postPageElement").css('display', 'block');
 }

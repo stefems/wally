@@ -14,7 +14,7 @@
 		</tags>
 		<imagePath>../postImages/post1Summary.JPG</imagePath>
 		<summaryText>p2 text</summaryText>
-		<url>../postPages/post1.html</url>
+		<url>post1.php</url>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 2</title>

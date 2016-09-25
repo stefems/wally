@@ -7,6 +7,7 @@
 
 	<body onload="loadMore()">
 		<?php include("menu.php"); ?>
+		<?php include("footer.php"); ?>
 		   <div class="container">
 				<div class="row" id="postAreaParent">
 					<!-- blog content column-->
@@ -18,12 +19,10 @@
 						
 					</div>
 				</div>
+				<div id="postPageElement">
+				</div>
 				<button id="loadMoreButton" onclick="loadMore()" type="button" class="btn btn-primary">Load More!</button>
 		   </div>
 
-
 	</body>
-	<footer>
-		<?php include("footer.php"); ?>
-	</footer>
 </html>
