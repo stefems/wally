@@ -4,17 +4,15 @@
 	xmlns:xsi="www.whilefalse.io/XMLTest"
 	xsi:schemaLocation="postSummary.xsd">
 	<postSummary>
-		<title>Test Post 1</title>
-		<date>2016-09-10</date>
+		<title>Make Your Commits Meaningful with Emojis</title>
+		<date>2016-09-25</date>
 		<tags>
 			<tag>Code</tag>
 			<tag>Humor</tag>
-			<tag>Career</tag>
-			<tag>Coffee</tag>
 		</tags>
-		<imagePath>../postImages/post1Summary.JPG</imagePath>
-		<summaryText>p2 text</summaryText>
-		<url>post1.php</url>
+		<imagePath>../postImages/emojiSummary.PNG</imagePath>
+		<summaryText>Using emojis as shorthand can save time, be informative, and still be funny.</summaryText>
+		<url>EmojisCommit.php</url>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 2</title>
@@ -24,7 +22,7 @@
 		</tags>
 		<imagePath>../postImages/post1Summary.JPG</imagePath>
 		<summaryText>p2 text</summaryText>
-		<url></url>
+		<url>post2.php</url>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 3</title>

@@ -1,6 +1,5 @@
 /* remove me! */
 var postNumberLoaded = 0;
-
 function onMobileTagClick(tagSelected) {
 	resetPage();
 	//get the element
@@ -20,10 +19,15 @@ function onMobileTagClick(tagSelected) {
 }
 
 function resetPage() {
+	var stateObj = { location: window.location.href };
+	history.pushState(stateObj, "", "/");
 	var postPageDiv = document.getElementById("postPageElement");
+
 	//if post page is shown, remove it, and show the post summary
 	if (window.getComputedStyle(postPageDiv).getPropertyValue("display") !== "none") {
-		postPageDiv.removeChild(postPageDiv.childNodes[0]);
+		postPageDiv.removeChild(postPageDiv.childNodes[1]);
+		//post page div has been removed, now hide the post element
+		$("#postPageElement").css('display', 'none');
 		$("#postAreaParent").css('display', 'block');
 	}
 }
@@ -77,12 +81,10 @@ var onMenuTagClick = ( function () {
 })();
 
 function getSelectedTagsViaMenu() {
-	console.log("calling getSelectedTagsViaMenu()");
 	var tagList = [];
 	var menuItems = [];
 	var isMobile = false;
 	if (window.getComputedStyle(document.getElementsByClassName("mobileFooter")[0]).getPropertyValue("display") !== "none") {
-		console.log("is mobile");
 		isMobile = true;
 	}
 	if (isMobile) {
@@ -132,7 +134,6 @@ function getPostsByTag(postElements) {
 }
 
 function refreshPosts() {
-	console.log("calling refreshPosts()");
 	//reset the counter for posts loaded
 	postNumberLoaded = 0;
 	//get the parent of the post area, the old post area
@@ -151,7 +152,6 @@ function refreshPosts() {
 }
 
 function loadMore() {
-	console.log("calling loadMore()");
 	var blogPostArea = document.getElementById("postArea");
 	var xhttp = new XMLHttpRequest();
 	var xmlDoc, txt, postRoot, posts;
@@ -207,11 +207,11 @@ function createPostSummaryHTML(XMLPostData, postAreaElement) {
 	postContent.className = "postSummaryContent";
 	postURLSpan.className = "postSummarySpan";
 	//Assigning values to the elements
-	var postPageName = XMLPostData.getElementsByTagName("url")[0].innerHTML
-	postURLSpan.onclick = function () {
-		loadPostPage(postPageName);
-	};
+	var postPageName = XMLPostData.getElementsByTagName("url")[0].innerHTML;
 	postTitle.innerHTML = XMLPostData.getElementsByTagName("title")[0].innerHTML;
+	postURLSpan.onclick = function () {
+		loadPostPage(postPageName, postTitle.innerHTML.replace( / /g, "-"), true);
+	};
 	var thumbnails = XMLPostData.getElementsByTagName("imagePath");
 	if (thumbnails.length != 0) {
 		postThumb.src = thumbnails[0].innerHTML;
@@ -273,11 +273,39 @@ function createTagSpan(tagList, contentElement) {
 	
 }
 
-function loadPostPage(postPageName) {
-	//hide the post parent
+function loadPostPage(postPageName, postTitle, shouldAddState) {
+	console.log("loading post page");
+	//hide the post parent, the list of post parents
 	$("#postAreaParent").css('display', 'none');
 	//load the data into the post page element
 	$("#postPageElement").load("../postPages/" + postPageName);
 	//show the post page element
 	$("#postPageElement").css('display', 'block');
+	//maybe rename the text on the button and change the function to reset the page
+	$("#loadMoreButton").css('display', 'none');
+	var stateObj = { location: postPageName};
+	history.pushState(stateObj, "", "/posts/" + postPageName);
+	if (shouldAddState == true) {
+		historyStack.push(postPageName);
+	}
+	console.log("adding to history stack: " + historyStack);
 }
+
+window.onpopstate = function(event) {
+	console.log("popstate triggered");
+	console.log("current stack: " + historyStack);
+	var previousState = historyStack[historyStack.length - 2];
+	console.log("previous state: " + previousState);
+	historyStack.splice(-1,1)
+	console.log("trimmed stack: " + historyStack);
+	//get state event and load the url
+	if ( previousState == "http://whilefalse.io/") {
+		resetPage();
+	}
+	else {
+		loadPostPage(previousState, '', false);
+	}
+};
+
+let historyStack = [window.location.href];
+console.log(historyStack);
