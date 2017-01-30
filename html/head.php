@@ -6,14 +6,13 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<!-- TODO: Set the tab icon -->
-	<!--<link rel="shortcut icon" href="images/invaderIcon.png">-->
 
 
-	<!-- Bootstrap core CSS -->
-	<link href="style/bootstrap.min.css" rel="stylesheet">
 	<!-- Font Awesome fonts -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<!-- Font Awesome Icons -->
+	<script src="https://use.fontawesome.com/f699d519fc.js"></script>
+
 	<!-- Customized CSS -->
 	<link href="style/whilefalseStyle.css" rel="stylesheet">
 

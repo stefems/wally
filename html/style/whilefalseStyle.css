@@ -2,16 +2,99 @@
 html, body {
 	font-family: 'Raleway', sans-serif;
 }
+body {
+	margin: 0;
+}
+
+.menuContainer {
+	background-color: #9099A2;
+	margin-top: 0;
+	z-index: 2;
+	width: 100%;
+	top: 0;
+	padding: 0;
+}
+#postContainer {
+	position: absolute;
+	width: 100%;
+}
+.titleDiv {
+	width: 100%;
+	overflow: auto;
+	margin-top: 0;
+	padding: 0;
+}
+#desktopTitle {
+	cursor: pointer;
+	color: white;
+	float: left;
+	padding: 0;
+	margin: 0;
+	z-index: 10;
+}
+.container {
+	position: relative;
+	width: 100%;
+}
+.search {
+	color: white;
+	cursor: pointer;
+	float: right;
+	display: inline;
+	margin-right: 3px;
+}
+.up {
+	color: #9099A2;
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	z-index: 5;
+}
+.up:hover {
+	cursor: pointer;
+}
+#searchBar {
+	display: none;
+	width: 100%;
+	position: relative;
+}
+#closeSearch {
+	position: absolute;
+	right: 5px;
+	bottom: 15px;
+	color: #9099A2;
+}
+#closeSearch:hover {
+	cursor: pointer;
+}
+#searchBar input {
+	width: 100%;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 5px;
+	border: none;
+	height: 50px;
+	color: #9099A2;
+}
+
+#searchMobile {
+	display: none;
+}
+#upMobile {	
+	display: none;
+}
+.postTagSpan {
+	color: white;
+	background-color: #9099A2;
+	display: inline-block;
+}
 
 /*=====================================================================
   DESKTOP CLASSES 
   =====================================================================
 */
 
-#desktopTitle {
-	cursor: pointer;
-	display: inline;
-}
+
 .blogSideBar {
 	
 }
@@ -24,6 +107,9 @@ html, body {
 .postSummaryRoot {
 	/*cursor: pointer;*/
 	position: relative;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+	margin: 10px;
+	background-color: white;
 }
 
 .postSummaryRoot *{
@@ -44,15 +130,15 @@ html, body {
 }
 
 .postSummaryTitle {
-	display: inline-block;
+	display: block;
+	color: #9099A2;
 }
-
 .postSummaryTagContainer i{
 	display: inline;
 }
 
 .postSummaryDate {
-	display: inline-block;
+	display: block;
 	color: lightgrey;
 }
 
@@ -76,27 +162,11 @@ html, body {
 }
 
 .desktopHeader{
-	border-width: 1px;
-	border-bottom-style: solid;
-	border-color: grey;
-	width: 100%;
 	margin-left: 0;
 	margin-right: 0;
 }
 
-.titleDiv {
-	width: calc(5*(100vw / 12 ) - 1vw);
-	float: left;
-}
-.menuDiv {
-	margin-top: 35px;
-	padding-left: 2px;
-	padding-right: 2px;
-	border-right-style: solid;
-	border-width: 1px;
-	border-color: grey;
-	float: left;
-}
+
 
 .menuDiv:hover {
 	cursor: pointer;
@@ -125,98 +195,9 @@ html, body {
 	
 
 
-/*=====================================================================
-  MOBILE CLASSES 
-  =====================================================================
-*/
-
-#mobileTitle {
-	cursor: pointer;
-	display: inline;
-}
-.mobileHeader {
-	margin: 0;
-	width: 100%;
-	display: none;
-	text-align: center;
-	border-width: 1px;
-	border-bottom-style: solid;
-	border-color: lightgrey;
-	width: 100%;
-}
-.mobileFooter {
-	width: 100%;
-	position: fixed;
-	display: none;
-	border-width: 1px;
-	border-top-style: solid;
-	border-left-style: none;
-	border-right-style: none;
-	border-bottom-style: none;
-	border-color: lightgrey;
-	background-color: white;
-	bottom: 0;
-	z-index: 2;
-	vertical-align: bottom;
-}
-
-.mobileMenuTagDiv {
-	border-left-style: none;
-	border-top-style: none;
-	border-bottom-style: none;
-	display: inline-block;
-    border-right-width: 1px;
-    border-width: 1px;
-    border-right-style: solid;
-    border-color: grey;
-	background-color: white;
-    width: 25%;
-    margin: 0;
-    text-align: center;
-    float: left;
-}
-.mobileMenuTagDivEnd {
-	display: inline-block;
-    width: 25%;
-    margin: 0;
-    text-align: center;
-    float: left;
-}
-
-.mobileTagIcon {
-	display: inline;
-	color: grey;
-}
-.marked {
-	color: white;
-}
-
-
-/*If the device width is 1000px or fewer
-NOTE:
-	The bootstrap wrap occurs at ~991px, hence the number.
-	If desktop users split their windows, the sidebar will 
-	go away. They'll have to adjust the zoom to get it back.
-	
-*/
-@media only screen and (max-width: 1000px)  {
-	.blogSideBar {
-		display: none;
-	}
-	.desktopHeader {
-		display: none;
-	}
-	.desktopFooter {
-		display: none;
-	}
-	.mobileHeader {
-		display: block;
-	}
-	.mobileFooter {
-		display: block;
-	}
-	.postSummaryThumb {
-		margin-top: 10%;
-	}
+ @media only screen and (max-width: 250px) {
+ 	body {
+ 		width: 250px;
+ 	}
 
 }

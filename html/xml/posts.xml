@@ -7,7 +7,7 @@
 		<title>Make Your Commits Meaningful with Emojis</title>
 		<date>2016-09-25</date>
 		<tags>
-			<tag>Code</tag>
+			<tag>Commits</tag>
 			<tag>Humor</tag>
 		</tags>
 		<imagePath>../postImages/emojiSummary.PNG</imagePath>
@@ -18,7 +18,7 @@
 		<title>Test Post 2</title>
 		<date>2016-09-09</date>
 		<tags>
-			<tag>Career</tag>
+			<tag>Java</tag>
 		</tags>
 		<imagePath>../postImages/post1Summary.JPG</imagePath>
 		<summaryText>p2 text</summaryText>
@@ -29,6 +29,7 @@
 		<date>2016-09-08</date>
 		<tags>
 			<tag>Humor</tag>
+			<tag>Python</tag>
 		</tags>
 		<summaryText>p3 text</summaryText>
 		<url></url>
@@ -37,7 +38,7 @@
 		<title>Test Post 4</title>
 		<date>2016-09-08</date>
 		<tags>
-			<tag>Humor</tag>
+			<tag>Machine-Learning</tag>
 		</tags>
 		<summaryText>p3 text</summaryText>
 		<url></url>
@@ -46,7 +47,8 @@
 		<title>Test Post 5</title>
 		<date>2016-09-10</date>
 		<tags>
-			<tag>Code</tag>
+			<tag>Video-Games</tag>
+			<tag>Java</tag>
 		</tags>
 		<imagePath>../postImages/post1Summary.JPG</imagePath>
 		<summaryText>p2 text</summaryText>
