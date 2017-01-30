@@ -191,7 +191,8 @@ function readyFunction() {
 	 		setFilter($( "#searchInput" ).val());
 	 	});*/
 	 	$("#searchForm").on("submit", function() {
-	 		setFilter($( "#searchInput" ).val());
+	 		$("#searchInput").blur();
+	 		setFilter($( "#searchInput").val());
 	 		return false;
 	 	});
 	 	$("#loadMoreButton").click(loadMore);
