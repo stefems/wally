@@ -17,6 +17,7 @@
 				  <xs:element name="imagePath" type="xs:string" minOccurs="0"/>
 				  <xs:element name="summaryText" type="xs:string"/>
 				  <xs:element name="url" type="xs:anyURI"/>
+				  <xs:element name="postNumber" type="xs:decimal" minOccurs="1"/>
 				</xs:sequence>
 			  </xs:complexType>
 			</xs:element>

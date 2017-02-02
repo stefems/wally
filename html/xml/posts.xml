@@ -12,7 +12,8 @@
 		</tags>
 		<imagePath>../postImages/emojiSummary.PNG</imagePath>
 		<summaryText>Using emojis as shorthand can save time, be informative, and still be funny.</summaryText>
-		<url>EmojisCommit.php</url>
+		<url>Make_Your_Commits_Meaningful_with_Emojis.php</url>
+		<postNumber>1</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 2</title>
@@ -23,6 +24,7 @@
 		<imagePath>../postImages/post1Summary.JPG</imagePath>
 		<summaryText>p2 text</summaryText>
 		<url>post2.php</url>
+		<postNumber>2</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 3</title>
@@ -33,6 +35,7 @@
 		</tags>
 		<summaryText>p3 text</summaryText>
 		<url></url>
+		<postNumber>3</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 4</title>
@@ -42,6 +45,7 @@
 		</tags>
 		<summaryText>p3 text</summaryText>
 		<url></url>
+		<postNumber>4</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 5</title>
@@ -53,6 +57,7 @@
 		<imagePath>../postImages/post1Summary.JPG</imagePath>
 		<summaryText>p2 text</summaryText>
 		<url></url>
+		<postNumber>5</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 6</title>
@@ -63,6 +68,7 @@
 		<imagePath>../postImages/post1Summary.JPG</imagePath>
 		<summaryText>p2 text</summaryText>
 		<url></url>
+		<postNumber>6</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 7</title>
@@ -72,6 +78,7 @@
 		</tags>
 		<summaryText>p3 text</summaryText>
 		<url></url>
+		<postNumber>7</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 8</title>
@@ -81,6 +88,7 @@
 		</tags>
 		<summaryText>p3 text</summaryText>
 		<url></url>
+		<postNumber>8</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 9</title>
@@ -91,6 +99,7 @@
 		<imagePath>../postImages/post1Summary.JPG</imagePath>
 		<summaryText>p2 text</summaryText>
 		<url></url>
+		<postNumber>9</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 10</title>
@@ -101,6 +110,7 @@
 		<imagePath>../postImages/post1Summary.JPG</imagePath>
 		<summaryText>p2 text</summaryText>
 		<url></url>
+		<postNumber>10</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 11</title>
@@ -110,6 +120,7 @@
 		</tags>
 		<summaryText>p3 text</summaryText>
 		<url></url>
+		<postNumber>11</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 12</title>
@@ -119,6 +130,7 @@
 		</tags>
 		<summaryText>p3 text</summaryText>
 		<url></url>
+		<postNumber>12</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 13</title>
@@ -129,6 +141,7 @@
 		<imagePath>../postImages/post1Summary.JPG</imagePath>
 		<summaryText>p2 text</summaryText>
 		<url></url>
+		<postNumber>13</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 14</title>
@@ -139,6 +152,7 @@
 		<imagePath>../postImages/post1Summary.JPG</imagePath>
 		<summaryText>p2 text</summaryText>
 		<url></url>
+		<postNumber>14</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 15</title>
@@ -148,6 +162,7 @@
 		</tags>
 		<summaryText>p3 text</summaryText>
 		<url></url>
+		<postNumber>15</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 16</title>
@@ -157,6 +172,7 @@
 		</tags>
 		<summaryText>p3 text</summaryText>
 		<url></url>
+		<postNumber>16</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 17</title>
@@ -167,6 +183,7 @@
 		<imagePath>../postImages/post1Summary.JPG</imagePath>
 		<summaryText>p2 text</summaryText>
 		<url></url>
+		<postNumber>17</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 18</title>
@@ -177,6 +194,7 @@
 		<imagePath>../postImages/post1Summary.JPG</imagePath>
 		<summaryText>p2 text</summaryText>
 		<url></url>
+		<postNumber>18</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 19</title>
@@ -186,6 +204,7 @@
 		</tags>
 		<summaryText>p3 text</summaryText>
 		<url></url>
+		<postNumber>19</postNumber>
 	</postSummary>
 	<postSummary>
 		<title>Test Post 20</title>
@@ -195,5 +214,6 @@
 		</tags>
 		<summaryText>p3 text</summaryText>
 		<url></url>
+		<postNumber>20</postNumber>
 	</postSummary>
 </postList>

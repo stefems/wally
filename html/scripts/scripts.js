@@ -1,23 +1,48 @@
 $(document).ready(readyFunction);
+let historyStack = [];
 
-	/* remove me! */
-	var postNumberLoaded = 0;
 function readyFunction() {
+
+
+	let postLimit = 15;
 	prepareLinks();
-	loadMore();
+	loadFromExternal();
+
+	function loadFromExternal() {
+		let urlElement = document.getElementById("phpURL");
+		let url = urlElement.textContent;
+		if (url != "") {
+			console.log("loading from external");
+			let fileTitle = url.substring(1);
+			let fileToLoad = fileTitle + ".php";
+			historyStack = [fileToLoad];
+			loadPostPage(fileToLoad, false);
+		}
+		else {
+			historyStack = [window.location.href];
+			console.log("not loading from external");
+			loadMore("", -1);
+		}
+	}
+
+	function internalLink() {
+		let link = $(this).data("postpagename");
+		console.log("internalLink() to " + link);
+		loadPostPage(link, true)
+	}
 
 	function removeFilter() {
 		$("#searchInput").val("");
-		refreshPosts();
-		loadMore();
+		clearPosts();
+		loadMore("", -1);
 	}
 
-	function setFilter(filterString){
-		//splice the string on commas
+	function setFilter(filterString) {
 		filterString = filterString.replace(/ /g, '');
+		$("#loadMoreButton").data("tags", filterString);
 		let tagsEntered = filterString.split(",");
-		refreshPosts();
-		loadMore(tagsEntered);
+		clearPosts();
+		loadMore(tagsEntered, -1);
 	}
 
 	function tagsMatch(postElement, tags) {
@@ -34,10 +59,18 @@ function readyFunction() {
 	}
 
 	function resetPage() {
+		console.log("resetPage()");
 		var stateObj = { location: window.location.href };
 		history.pushState(stateObj, "", "/");
 		var postPageDiv = document.getElementById("postPageElement");
-
+		if (historyStack[historyStack.length - 1] != "http://whilefalse.io/") {
+			historyStack.push("http://whilefalse.io/");
+		}
+		console.log("current stack: " + historyStack);
+		if (historyStack[0] != "http://whilefalse.io/") {
+			console.log("from external, going back");
+			loadMore("", -1);
+		}
 		//if post page is shown, remove it, and show the post summary
 		if (window.getComputedStyle(postPageDiv).getPropertyValue("display") !== "none") {
 			postPageDiv.removeChild(postPageDiv.childNodes[1]);
@@ -45,9 +78,15 @@ function readyFunction() {
 			$("#postPageElement").css('display', 'none');
 			$("#postAreaParent").css('display', 'block');
 		}
+		console.log("should show: " + $("#loadMoreButton").data("shouldshow") );
+		if ($("#loadMoreButton").data("shouldshow") == "true") {
+			console.log("trying");
+			$("#loadMoreButton").css("display", "block");
+		}
 	}
 
-	function refreshPosts() {
+	function clearPosts() {
+		console.log("clearPosts()");
 		//reset the counter for posts loaded
 		postNumberLoaded = 0;
 		//get the parent of the post area, the old post area
@@ -59,11 +98,15 @@ function readyFunction() {
 		newPostArea.id = "postArea";
 		//replace the div
 		postParent.replaceChild(newPostArea, postArea);
-		var loadMoreButton = document.getElementById("loadMoreButton");
-		loadMoreButton.style.display = "block";
+		$("#loadMoreButton").css("display", "block");
+		$("#loadMoreButton").data("shouldshow", "true");
 	}
 
-	function loadMore(tags) {
+	function loadMore(tags, lastPostNumberLoaded) {
+		console.log(tags);
+		let postLimit = 1;
+		let postsLoaded = 0;
+		console.log("loadMore()");
 		var blogPostArea = document.getElementById("postArea");
 		var xhttp = new XMLHttpRequest();
 		var xmlDoc, txt, postRoot, posts;
@@ -74,27 +117,47 @@ function readyFunction() {
 				//TODO PERFORMANCE: Is it okay to get all of the posts
 				//  like this and only use the first few?
 				posts = xmlDoc.getElementsByTagName("postSummary");
-				//Only run the recent ones TODO Asynchronous JS?
-				for (i = postNumberLoaded; i < postNumberLoaded + 15; i++) { 
-					//if we're out of posts :(
-					if (posts.length === i) {
-						var loadMoreButton = document.getElementById("loadMoreButton");
-						loadMoreButton.style.display = "none";
-						break;
-					}
-					else {
-						if (typeof tags != "undefined") {
+				posts = [].slice.call(posts);
+				if (lastPostNumberLoaded != -1) {
+					posts = posts.slice(lastPostNumberLoaded);
+					console.log("posts getting sliced");
+				}
+				let finalPostNumber = 0;
+				let postsRemaining = false;
+				if (posts.length != 0) {
+					postsRemaining = true;
+				}
+				let i = 0;
+				console.log("posts to parse: " + posts.length);
+				while (postsRemaining && (postsLoaded != postLimit) ) {
+					console.log(i);
+					if (i != posts.length) { 
+						if (tags != "") {
 							if (tagsMatch(posts[i].getElementsByTagName("tags")[0], tags) ) {
 								createPostSummaryHTML(posts[i], blogPostArea);
+								console.log("tagged post added " + posts[i].getElementsByTagName("postNumber")[0]);
+								postsLoaded++;
 							}	
 						}
 						else {
 							createPostSummaryHTML(posts[i], blogPostArea);
+							console.log("non-tagged post added " + posts[i].getElementsByTagName("postNumber")[0]);
+							postsLoaded++;
 						}
+						finalPostNumber = +posts[i].getElementsByTagName("postNumber")[0].innerHTML;
+						i++;
 					}
-					
+					else {
+						postsRemaining = false;
+					}
 				}
-				postNumberLoaded += 15;
+				console.log("final: " + finalPostNumber);
+				if (postsRemaining == false) {
+					console.log("all posts considered.");
+					$("#loadMoreButton").data("shouldshow", "false");
+					$("#loadMoreButton").css("display", "none");
+				}
+				$("#loadMoreButton").data("lastpostloaded", finalPostNumber);
 			}
 		};
 		var date = new Date();
@@ -104,6 +167,11 @@ function readyFunction() {
 		id *= dateSeconds;
 		xhttp.open("GET", "../xml/posts.xml?t=" + id, true);
 		xhttp.send();
+	}
+
+	function loadMoreViaButton() {
+		let tags = $("#loadMoreButton").data("tags").split(",");
+		loadMore(tags, $("#loadMoreButton").data("lastpostloaded"));
 	}
 
 	function createPostSummaryHTML(XMLPostData, postAreaElement) {
@@ -129,7 +197,7 @@ function readyFunction() {
 		var postPageName = XMLPostData.getElementsByTagName("url")[0].innerHTML;
 		postTitle.innerHTML = XMLPostData.getElementsByTagName("title")[0].innerHTML;
 		postURLSpan.onclick = function () {
-			loadPostPage(postPageName, postTitle.innerHTML.replace( / /g, "-"), true);
+			loadPostPage(postPageName, true);
 		};
 		//postURL.href = XMLPostData.getElementsByTagName("url")[0].innerHTML;
 		//postURL.appendChild(postURLSpan);
@@ -154,35 +222,44 @@ function readyFunction() {
 		postAreaElement.appendChild(postRoot);
 	}
 
-	function loadPostPage(postPageName, postTitle, shouldAddState) {
+	function loadPostPage(postPageName, shouldAddState) {
+		console.log("loadPostPage()");
+		console.log("history stack: " + historyStack);
 		//hide the post parent, the list of post parents
 		$("#postAreaParent").css('display', 'none');
 		//load the data into the post page element
-		$("#postPageElement").load("../postPages/" + postPageName);
+		$("#postPageElement").load("../postPages/" + postPageName, function() {
+			$(".internalLink").click(internalLink);
+		});
 		//show the post page element
 		$("#postPageElement").css('display', 'block');
 		//maybe rename the text on the button and change the function to reset the page
 		$("#loadMoreButton").css('display', 'none');
 		var stateObj = { location: postPageName};
-		history.pushState(stateObj, "", "/posts/" + postPageName);
+		history.pushState(stateObj, "", postPageName.split(".php")[0]);
+		console.log(shouldAddState);
 		if (shouldAddState == true) {
 			historyStack.push(postPageName);
 		}
-		console.log("adding to history stack: " + historyStack);
+		console.log("history stack: " + historyStack);
 	}
 
 	function prepareLinks() {
+		console.log("prepareLinks()");
+		$("#loadMoreButton").data("shouldshow", "true");
 		$('.up').click(function(){
 		    $("html, body").animate({ scrollTop: 0 }, 600);
 		    return false;
 	 	});
 	 	$('.search').click(function(){
-	 		$("#searchBar").slideDown();
+	 		$(".close").css("display", "block");
+	 		$("#searchForm").slideDown();
 	 		$('.search').css("display", "none");
 	 		$("#searchInput").focus();
 	 	});
 	 	$('.close').click(function(){
-	 		$("#searchBar").slideUp();
+	 		$(".close").css("display", "none");
+	 		$("#searchForm").slideUp();
 	 		$('.search').css("display", "inline");
 	 		removeFilter();
 	 	});
@@ -195,7 +272,7 @@ function readyFunction() {
 	 		setFilter($( "#searchInput").val());
 	 		return false;
 	 	});
-	 	$("#loadMoreButton").click(loadMore);
+	 	$("#loadMoreButton").click(loadMoreViaButton);
 	 	$("#desktopTitle").click(resetPage);
 
 	}
@@ -213,7 +290,7 @@ function readyFunction() {
 		}
 		else if (typeof previousState != "undefined"){
 			console.log("going to page: " + previousState);
-			loadPostPage(previousState, '', false);
+			loadPostPage(previousState, false);
 		}
 		else {
 			console.log("state is undefined");
@@ -222,8 +299,3 @@ function readyFunction() {
 		}
 	};
 }
-
-
-
-let historyStack = [window.location.href];
-
