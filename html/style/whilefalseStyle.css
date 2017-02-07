@@ -187,8 +187,25 @@ body {
 	float: left;
 }
 
-#loadMoreButton {
-	width: 100%;
+#buttonDiv {
+ text-align: center;
+}
+.buttonStyle:hover {
+	cursor: pointer;
+}
+.buttonStyle {
+	display: inline;
+	width: 25%;
+	border-radius: 2px;
+	border: none;
+	background-color: #9099A2;
+	color: white;
+	margin-bottom: 5px;
+	font-size: 16px;
+	transition: border-color 2s;
+}
+.buttonHidden {
+	display: none;
 }
 
 .loading {

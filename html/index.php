@@ -2,8 +2,8 @@
 <html lang="en">
 	<head>
 		<title>Bah, come back later.</title>
-		<?php include("head.php"); ?>
-		<?php include("routing.php"); ?>
+		<?php include("php/head.php"); ?>
+		<?php include("php/routing.php"); ?>
 	</head>
 	<body>
 		<div class="container">
@@ -25,7 +25,9 @@
 					<div id="postArea" class="blogPostArea">
 						<!-- POSTS LOAD HERE -->
 					</div>
-					<button id="loadMoreButton" type="button" class="btn btn-primary" data-tags="" data-lastpostloaded="" data-shouldshow="true">Load More!</button>
+					<div id="buttonDiv">
+						<button id="loadMoreButton" class="buttonStyle" type="button" data-tags="" data-lastpostloaded="" data-shouldshow="true">Load More!</button>
+					</div>
 				</div>
 				<div id="postPageElement">
 					<!-- ACTUAL POST LOADS HERE -->

@@ -11,6 +11,9 @@ function readyFunction() {
 	function loadFromExternal() {
 		let urlElement = document.getElementById("phpURL");
 		let url = urlElement.textContent;
+		let testElement = document.getElementById("phpURL");
+		let test = testElement.textContent;
+		console.log("test: " + url);
 		if (url != "") {
 			console.log("loading from external");
 			let fileTitle = url.substring(1);
@@ -20,6 +23,8 @@ function readyFunction() {
 		}
 		else {
 			historyStack = [window.location.href];
+			let stateObj = {location: window.location.href};
+			history.pushState(stateObj, "", "/");
 			console.log("not loading from external");
 			loadMore("", -1);
 		}
@@ -78,10 +83,8 @@ function readyFunction() {
 			$("#postPageElement").css('display', 'none');
 			$("#postAreaParent").css('display', 'block');
 		}
-		console.log("should show: " + $("#loadMoreButton").data("shouldshow") );
 		if ($("#loadMoreButton").data("shouldshow") == "true") {
-			console.log("trying");
-			$("#loadMoreButton").css("display", "block");
+			$("#loadMoreButton").removeClass("buttonHidden");
 		}
 	}
 
@@ -94,11 +97,11 @@ function readyFunction() {
 		var postArea = document.getElementById("postArea");
 		//create a new post area div
 		var newPostArea = document.createElement("DIV");
-		newPostArea.className = "col-md-9 blogPostArea";
+		newPostArea.className = "blogPostArea";
 		newPostArea.id = "postArea";
 		//replace the div
 		postParent.replaceChild(newPostArea, postArea);
-		$("#loadMoreButton").css("display", "block");
+		$("#loadMoreButton").removeClass("buttonHidden");
 		$("#loadMoreButton").data("shouldshow", "true");
 	}
 
@@ -155,7 +158,7 @@ function readyFunction() {
 				if (postsRemaining == false) {
 					console.log("all posts considered.");
 					$("#loadMoreButton").data("shouldshow", "false");
-					$("#loadMoreButton").css("display", "none");
+					$("#loadMoreButton").addClass("buttonHidden");
 				}
 				$("#loadMoreButton").data("lastpostloaded", finalPostNumber);
 			}
@@ -165,7 +168,7 @@ function readyFunction() {
 		var id = Math.random() * dateSeconds;
 		dateSeconds = date.getSeconds();
 		id *= dateSeconds;
-		xhttp.open("GET", "../xml/posts.xml?t=" + id, true);
+		xhttp.open("GET", "../.xml/posts.xml?t=" + id, true);
 		xhttp.send();
 	}
 
@@ -234,7 +237,7 @@ function readyFunction() {
 		//show the post page element
 		$("#postPageElement").css('display', 'block');
 		//maybe rename the text on the button and change the function to reset the page
-		$("#loadMoreButton").css('display', 'none');
+		$("#loadMoreButton").addClass('buttonHidden');
 		var stateObj = { location: postPageName};
 		history.pushState(stateObj, "", postPageName.split(".php")[0]);
 		console.log(shouldAddState);

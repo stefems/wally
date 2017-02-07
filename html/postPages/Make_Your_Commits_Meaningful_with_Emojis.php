@@ -1,8 +1,8 @@
 <html>
-	<div>
+	<div class="postContainer">
 		<h1>Make Your Commits Meaningful with Emojis</h1>
 		<p>Everyone loves to harp on worthless commit messages.</p>
-		<img class="img-fluid" src="https://i.redd.it/87xckbodwwlx.png"/>
+		<img class="" src="https://i.redd.it/87xckbodwwlx.png"/>
 		<br>
 		<p>
 		It’s as if your drunk roommate rearranged everything in the kitchen and told you that it was for the best but doesn’t tell you where the bowls are located. You need your cereal, goddamit, and oh, great, we can’t find the mugs either -- WE’RE ALL GONNA DIE.

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<postList 
+	xmlns="www.whilefalse.io"
+	xmlns:xsi="www.whilefalse.io/XMLTest"
+	xsi:schemaLocation="postSummary.xsd">
+	<postSummary>
+		<title>Make Your Commits Meaningful with Emojis</title>
+		<date>2016-09-25</date>
+		<tags>
+			<tag>Commits</tag>
+			<tag>Humor</tag>
+		</tags>
+		<imagePath>../postImages/emojiSummary.PNG</imagePath>
+		<summaryText>Using emojis as shorthand can save time, be informative, and still be funny.</summaryText>
+		<url>Make_Your_Commits_Meaningful_with_Emojis.php</url>
+		<postNumber>1</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 2</title>
+		<date>2016-09-09</date>
+		<tags>
+			<tag>Java</tag>
+		</tags>
+		<imagePath>../postImages/post1Summary.JPG</imagePath>
+		<summaryText>p2 text</summaryText>
+		<url>post2.php</url>
+		<postNumber>2</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 3</title>
+		<date>2016-09-08</date>
+		<tags>
+			<tag>Humor</tag>
+			<tag>Python</tag>
+		</tags>
+		<summaryText>p3 text</summaryText>
+		<url></url>
+		<postNumber>3</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 4</title>
+		<date>2016-09-08</date>
+		<tags>
+			<tag>Machine-Learning</tag>
+		</tags>
+		<summaryText>p3 text</summaryText>
+		<url></url>
+		<postNumber>4</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 5</title>
+		<date>2016-09-10</date>
+		<tags>
+			<tag>Video-Games</tag>
+			<tag>Java</tag>
+		</tags>
+		<imagePath>../postImages/post1Summary.JPG</imagePath>
+		<summaryText>p2 text</summaryText>
+		<url></url>
+		<postNumber>5</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 6</title>
+		<date>2016-09-09</date>
+		<tags>
+			<tag>Career</tag>
+		</tags>
+		<imagePath>../postImages/post1Summary.JPG</imagePath>
+		<summaryText>p2 text</summaryText>
+		<url></url>
+		<postNumber>6</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 7</title>
+		<date>2016-09-08</date>
+		<tags>
+			<tag>Humor</tag>
+		</tags>
+		<summaryText>p3 text</summaryText>
+		<url></url>
+		<postNumber>7</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 8</title>
+		<date>2016-09-08</date>
+		<tags>
+			<tag>Humor</tag>
+		</tags>
+		<summaryText>p3 text</summaryText>
+		<url></url>
+		<postNumber>8</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 9</title>
+		<date>2016-09-10</date>
+		<tags>
+			<tag>Code</tag>
+		</tags>
+		<imagePath>../postImages/post1Summary.JPG</imagePath>
+		<summaryText>p2 text</summaryText>
+		<url></url>
+		<postNumber>9</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 10</title>
+		<date>2016-09-09</date>
+		<tags>
+			<tag>Career</tag>
+		</tags>
+		<imagePath>../postImages/post1Summary.JPG</imagePath>
+		<summaryText>p2 text</summaryText>
+		<url></url>
+		<postNumber>10</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 11</title>
+		<date>2016-09-08</date>
+		<tags>
+			<tag>Humor</tag>
+		</tags>
+		<summaryText>p3 text</summaryText>
+		<url></url>
+		<postNumber>11</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 12</title>
+		<date>2016-09-08</date>
+		<tags>
+			<tag>Humor</tag>
+		</tags>
+		<summaryText>p3 text</summaryText>
+		<url></url>
+		<postNumber>12</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 13</title>
+		<date>2016-09-10</date>
+		<tags>
+			<tag>Code</tag>
+		</tags>
+		<imagePath>../postImages/post1Summary.JPG</imagePath>
+		<summaryText>p2 text</summaryText>
+		<url></url>
+		<postNumber>13</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 14</title>
+		<date>2016-09-09</date>
+		<tags>
+			<tag>Career</tag>
+		</tags>
+		<imagePath>../postImages/post1Summary.JPG</imagePath>
+		<summaryText>p2 text</summaryText>
+		<url></url>
+		<postNumber>14</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 15</title>
+		<date>2016-09-08</date>
+		<tags>
+			<tag>Humor</tag>
+		</tags>
+		<summaryText>p3 text</summaryText>
+		<url></url>
+		<postNumber>15</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 16</title>
+		<date>2016-09-08</date>
+		<tags>
+			<tag>Humor</tag>
+		</tags>
+		<summaryText>p3 text</summaryText>
+		<url></url>
+		<postNumber>16</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 17</title>
+		<date>2016-09-10</date>
+		<tags>
+			<tag>Code</tag>
+		</tags>
+		<imagePath>../postImages/post1Summary.JPG</imagePath>
+		<summaryText>p2 text</summaryText>
+		<url></url>
+		<postNumber>17</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 18</title>
+		<date>2016-09-09</date>
+		<tags>
+			<tag>Career</tag>
+		</tags>
+		<imagePath>../postImages/post1Summary.JPG</imagePath>
+		<summaryText>p2 text</summaryText>
+		<url></url>
+		<postNumber>18</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 19</title>
+		<date>2016-09-08</date>
+		<tags>
+			<tag>Humor</tag>
+		</tags>
+		<summaryText>p3 text</summaryText>
+		<url></url>
+		<postNumber>19</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Test Post 20</title>
+		<date>2016-09-08</date>
+		<tags>
+			<tag>Humor</tag>
+		</tags>
+		<summaryText>p3 text</summaryText>
+		<url></url>
+		<postNumber>20</postNumber>
+	</postSummary>
+</postList>
