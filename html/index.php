@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Bah, come back later.</title>
+		<title>WhileFalse.io: A blog that's never gonna happen.</title>
 		<?php include("php/head.php"); ?>
 		<?php include("php/routing.php"); ?>
 	</head>

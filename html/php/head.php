@@ -14,7 +14,8 @@
 	<script src="https://use.fontawesome.com/f699d519fc.js"></script>
 
 	<!-- Customized CSS -->
-	<link href="style/whilefalseStyle.css" rel="stylesheet">
+	<link type="text/css" href="style/whilefalseStyle.css" rel="stylesheet">
+	<link type="text/css" href="style/postStyle.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>

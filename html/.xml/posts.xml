@@ -3,38 +3,83 @@
 	xmlns="www.whilefalse.io"
 	xmlns:xsi="www.whilefalse.io/XMLTest"
 	xsi:schemaLocation="postSummary.xsd">
+	
+	
+	<!--
 	<postSummary>
-		<title>Make Your Commits Meaningful with Emojis</title>
-		<date>2016-09-25</date>
-		<tags>
-			<tag>Commits</tag>
-			<tag>Humor</tag>
-		</tags>
-		<imagePath>../postImages/emojiSummary.PNG</imagePath>
-		<summaryText>Using emojis as shorthand can save time, be informative, and still be funny.</summaryText>
-		<url>Make_Your_Commits_Meaningful_with_Emojis.php</url>
-		<postNumber>1</postNumber>
-	</postSummary>
-	<postSummary>
-		<title>Test Post 2</title>
-		<date>2016-09-09</date>
-		<tags>
-			<tag>Java</tag>
-		</tags>
-		<imagePath>../postImages/post1Summary.JPG</imagePath>
-		<summaryText>p2 text</summaryText>
-		<url>post2.php</url>
-		<postNumber>2</postNumber>
-	</postSummary>
-	<postSummary>
-		<title>Test Post 3</title>
+		<title>All of the Coding Jargon that No One Explained to You</title>
 		<date>2016-09-08</date>
 		<tags>
 			<tag>Humor</tag>
 			<tag>Python</tag>
 		</tags>
-		<summaryText>p3 text</summaryText>
-		<url></url>
+		<summaryText>Confused by init, declare, throw and more? We're gonna help.</summaryText>
+		<url>All_of_the_Coding_Jargon_that_No_One_Explained_to_You.php</url>
+		<postNumber>3</postNumber>
+	</postSummary>
+	-->
+
+	<postSummary>
+		<title>How I made it: A Twitter Bot that Recommends Bands</title>
+		<date>2016-03-14</date>
+		<tags>
+			<tag>Music</tag>
+			<tag>Bots</tag>
+			<tag>Twitter</tag>
+			<tag>Node</tag>
+		</tags>
+		<summaryText>Discovering new music can be hard work. I made a Twitter bot to make it a little easier.</summaryText>
+		<url>How_I_made_it_A_Twitter_Bot_that_Recommends_Bands.php</url>
+		<postNumber>1</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Twitter Bots: A Curated Collection</title>
+		<date>2017-03-13</date>
+		<tags>
+			<tag>Twitter</tag>
+			<tag>Bots</tag>
+			<tag>Art</tag>
+			<tag>Humor</tag>
+		</tags>
+		<summaryText>Twitter bots are kinda-sorta the coolest new art form. Take a gander, gain inspiration, and stay woke (yeah, that’s a bot.)</summaryText>
+		<url>Twitter_Bots_A_Curated_Collection.php</url>
+		<postNumber>2</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Learning to Code: Teaching Strategies and Tripping-Blocks</title>
+		<date>2017-02-08</date>
+		<tags>
+			<tag>Coding</tag>
+			<tag>Teaching</tag>
+			<tag>Learning</tag>
+		</tags>
+		<imagePath></imagePath>
+		<summaryText>Learning to program is hard. This post dives into what makes it hard and what I've learned as a teacher.</summaryText>
+		<url>Learning_to_Code_Teaching_Strategies_and_Tripping-Blocks.php</url>
+		<postNumber>3</postNumber>
+	</postSummary>
+	<postSummary>
+		<title>Make Your Commits Meaningful with Emojis</title>
+		<date>2016-09-25</date>
+		<tags>
+			<tag>Commits</tag>
+			<tag>Emojis</tag>
+		</tags>
+		<imagePath>../postImages/emojiSummary.PNG</imagePath>
+		<summaryText>Using emojis as shorthand can save time, be informative, and still be funny.</summaryText>
+		<url>Make_Your_Commits_Meaningful_with_Emojis.php</url>
+		<postNumber>4</postNumber>
+	</postSummary>
+	<!--
+	<postSummary>
+		<title>All of the Coding Jargon that No One Explained to You</title>
+		<date>2016-09-08</date>
+		<tags>
+			<tag>Humor</tag>
+			<tag>Python</tag>
+		</tags>
+		<summaryText>Confused by init, declare, throw and more? We're gonna help.</summaryText>
+		<url>All_of_the_Coding_Jargon_that_No_One_Explained_to_You.php</url>
 		<postNumber>3</postNumber>
 	</postSummary>
 	<postSummary>
@@ -216,4 +261,5 @@
 		<url></url>
 		<postNumber>20</postNumber>
 	</postSummary>
+-->
 </postList>

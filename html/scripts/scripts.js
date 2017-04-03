@@ -107,7 +107,7 @@ function readyFunction() {
 
 	function loadMore(tags, lastPostNumberLoaded) {
 		console.log(tags);
-		let postLimit = 1;
+		let postLimit = 10;
 		let postsLoaded = 0;
 		console.log("loadMore()");
 		var blogPostArea = document.getElementById("postArea");

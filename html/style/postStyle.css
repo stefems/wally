@@ -1,0 +1,78 @@
+#postPageElement {
+	width: 70%;
+	margin: auto;
+}
+.codeBlock {
+	background-color: lightgrey;
+}
+.medium {
+	height: 20px;
+	box-sizing: border-box;
+	padding: 1px 8px 1px 6px;
+	background-color: #00AB6C;
+	border-radius: 3px; 
+	width: 60px;
+	cursor: pointer;
+	transition: background-color .25s;
+	display: block;
+	margin-bottom: 3px;
+	margin-top: 3px;
+}
+.medium:hover {
+	background-color: #00774B;
+}
+
+.medium span {
+	display: inline;
+	color: #fff;
+	position: absolute;
+	font-size: 12px;
+	margin-top: 2px;
+	margin-left: 2px;
+}
+.mediumLink {
+	color: #fff;
+	transition: color 1s;
+}
+.twitterLink {
+	margin-left: 5px;
+	margin-right: 5px;
+	color: #9099A2;
+	transition: color 1s;
+}
+
+#postContainer h1 {
+	color: #9099A2;
+}
+
+.imageText {
+	text-align: center;
+	color: grey;
+	font-size: 11px;
+}
+.postImage {
+	max-width: 800px;
+	width: 100%;
+	display: block;
+	margin: auto;
+}
+
+#postContainer p {
+
+}
+
+.postTagSpan {
+	display: inline-block;
+	padding: 3px;
+}
+.postSummaryDate {
+	display: inline-block;
+}
+@media only screen and (max-width: 250px) {
+
+ 	#postPageElement {
+ 		width: 100%;
+ 	}
+
+
+}
